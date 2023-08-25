@@ -1,0 +1,30 @@
+.flag {
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .flag:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 200px;
+    height: 100%;
+    background-color: #dd3333;
+    animation: flagWave 2s ease-in-out infinite;
+    transform: perspective(1px) translateZ(0);
+    transform-origin: 0 0;
+  }
+  
+  @keyframes flagWave {
+    0%, 100% {
+      transform: perspective(1px) translateZ(0);
+    }
+    50% {
+      transform: perspective(1px) translateZ(0) scaleX(-1);
+    }
+  }
+  

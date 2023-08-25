@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <input type="text" id="inputKarakter">
+        <input type="button" value="proses" id="urutkan" onclick="urutkan()">
+        <p>Data yang diinput: <span id="dataTampil"></span></p>
+
+        <script>
+            const cities = ['Medan','Jakarta', 'Surabaya', 'Bandung', 'Yogyakarta', 'Semarang', 'Banten', 'Pontianak'];
+
+            // Fungsi untuk menghitung jumlah karakter tertentu dalam sebuah string
+            function countCharacter(str, char) {
+                let count = 0;
+                for (let i = 0; i < str.length; i++) {
+                    if (str[i] === char) {
+                        count++;
+                    }
+                }
+                return count;
+            }
+
+            // Fungsi untuk membandingkan jumlah karakter tertentu dalam dua string
+            function compareCharactersCount(a, b, char) {
+                const charCountA = countCharacter(a, char);
+                const charCountB = countCharacter(b, char);
+                
+                return charCountB - charCountA; // Urutan dari yang terbanyak ke yang paling sedikit
+            }
+
+            function urutkan() {
+                // Karakter yang akan digunakan untuk mengurutkan
+                const characterToSortBy = document.getElementById('inputKarakter').value;
+                const dataTampil = document.getElementById('dataTampil');
+
+                // Mengurutkan array berdasarkan jumlah karakter karakterToSortBy dalam tiap elemen
+                const sortedCities = cities.sort((a, b) => compareCharactersCount(a, b, characterToSortBy));
+
+                dataTampil.textContent = sortedCities;
+            };
+        </script>
+
+        <div class="flag"></div>
+
+    </body>
+</html>
